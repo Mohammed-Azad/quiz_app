@@ -13,7 +13,7 @@ class Answer extends StatelessWidget {
       child: ElevatedButton(
         style:ElevatedButton.styleFrom(
           shape: 
-        BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+        BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
         ),
         child: Text(answers),
         onPressed: handler(),

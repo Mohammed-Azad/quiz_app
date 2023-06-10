@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
-import './question.dart';
+import 'package:quiz_app/quiz.dart';
+import './answer.dart';
 
 void main() {
-  runApp(const QuizApp());
+  runApp(QuizApp());
 }
 
 class QuizApp extends StatefulWidget {
-  const QuizApp({super.key});
 
   @override
   State<QuizApp> createState() => _QuizAppState();
 }
 
 class _QuizAppState extends State<QuizApp> {
+
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex += 1;
+    });
+
+    if (_questionIndex < _questions.length) {
+      print('We have more questions!');
+    } else {
+      print('We are done!');
+    }
+  }
   final _questions = [
     {
       'question': "How Old Are you ?",
@@ -23,25 +37,11 @@ class _QuizAppState extends State<QuizApp> {
       'Answer': ["Hawler", "Sulaymaniah", "Duhok", "Halabja"]
     },
     {
-      'question': "Are you stundent ?",
+      'question': "Are you a student?",
       'Answer': ["Yes", "No"]
     },
   ];
-  var _questionIndex = 0;
-  void _answerQuestion() {
-    setState(() {
-      _questionIndex++;
-    });
-    if (_questionIndex < _questions.length) {
-      SnackBar(
-        content: Text("you have more questions"),
-      );
-    } else {
-      SnackBar(
-        content: Text("you are done ! "),
-      );
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +50,16 @@ class _QuizAppState extends State<QuizApp> {
         appBar: AppBar(
           title: Text("Quiz App"),
         ),
-        body: Column(
-          children: [],
-        ),
+        body: Center(
+        
+        child:_questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : Center(child: Text("The End",style: TextStyle(fontSize: 22),),),
+      ),
       ),
     );
   }

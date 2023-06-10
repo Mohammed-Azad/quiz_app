@@ -5,9 +5,12 @@ import './answer.dart';
 class Quiz extends StatelessWidget {
   final List questions;
   final int questionIndex;
-  final Function answerquestion;
+  final Function answerQuestion;
 
-  const Quiz(@required this.answerquestion,@required this.questionIndex,@required this.questions);
+  const Quiz({
+        required this.questions,
+        required this.questionIndex,
+        required this.answerQuestion});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +18,9 @@ class Quiz extends StatelessWidget {
       children: [
         Questions(
           questions[questionIndex]['question'],
-          ),
-          ...(questions[questionIndex]['Answer'] as List).map((answer) {
-          return Answer(() => answerquestion(),answer['text']);
+        ),
+        ...(questions[questionIndex]['Answer'] as List).map((answer) {
+          return Answer(() => answerQuestion, answer);
         }).toList()
       ],
     );
