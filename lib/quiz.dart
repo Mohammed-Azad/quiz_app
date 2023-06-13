@@ -16,11 +16,12 @@ class Quiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // call Question class have separate file 
         Questions(
           questions[questionIndex]['question'],
         ),
         ...(questions[questionIndex]['Answer'] as List).map((answer) {
-          return Answer(() => answerQuestion, answer);
+          return Answer(() => answerQuestion, answer);  // call Answer class have separate style
         }).toList()
       ],
     );

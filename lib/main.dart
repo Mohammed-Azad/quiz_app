@@ -53,7 +53,7 @@ class _QuizAppState extends State<QuizApp> {
         body: Center(
         
         child:_questionIndex < _questions.length
-            ? Quiz(
+            ? Quiz( 
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,
                 questions: _questions,
