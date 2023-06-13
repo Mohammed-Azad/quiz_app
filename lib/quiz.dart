@@ -7,21 +7,22 @@ class Quiz extends StatelessWidget {
   final int questionIndex;
   final Function answerQuestion;
 
-  const Quiz({
-        required this.questions,
-        required this.questionIndex,
-        required this.answerQuestion});
+  const Quiz(
+      {required this.questions,
+      required this.questionIndex,
+      required this.answerQuestion});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // call Question class have separate file 
+        // call Question class have separate file
         Questions(
           questions[questionIndex]['question'],
         ),
         ...(questions[questionIndex]['Answer'] as List).map((answer) {
-          return Answer(() => answerQuestion, answer);  // call Answer class have separate style
+          return Answer(() => answerQuestion,
+              answer); // call Answer class have separate style
         }).toList()
       ],
     );

@@ -8,12 +8,14 @@ class Questions extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(15),
       width: double.infinity,
-      child: Text(questions,
-      style: const TextStyle(
-        fontSize: 30,
-        color: Colors.black54,
+      child: Text(
+        questions,
+        style: const TextStyle(
+          fontSize: 30,
+          color: Colors.black54,
+        ),
+        textAlign: TextAlign.center,
       ),
-      textAlign: TextAlign.center,),
     );
   }
 }
